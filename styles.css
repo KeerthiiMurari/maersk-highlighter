@@ -1,21 +1,71 @@
+* { box-sizing: border-box; }
+body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; padding: 12px; }
 
-:root{
-  --bg:#f3f4f6;
-  --card:#ffffff;
-  --muted:#6b7280;
+/* Layout */
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 18px;
+  height: calc(100vh - 24px);
 }
-*{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;}
-body{margin:0;background:var(--bg);color:#111827}
-.app{display:flex;height:100vh;gap:0.5rem}
-.left{width:55%;overflow:auto;padding:16px}
-.right{width:45%;overflow:auto;padding:24px;background:linear-gradient(#fff, #fafafa)}
-.toolbar{display:flex;gap:8px;align-items:center; margin-bottom:12px}
-.btn{padding:8px 10px;border-radius:8px;border:1px solid #e5e7eb;background:var(--card);cursor:pointer}
-.btn:hover{transform:translateY(-1px)}
-.pdf-page{position:relative;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,0.06);display:inline-block}
-.page-label{position:absolute;right:8px;top:8px;background:#000;color:#fff;padding:2px 6px;border-radius:4px;font-size:12px;opacity:0.85}
-.highlight-overlay{position:absolute;background:yellow;opacity:0.6;pointer-events:none;z-index:20}
-.controls {display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
-.small{font-size:13px;color:var(--muted)}
-.search-box{padding:8px;border-radius:8px;border:1px solid #e5e7eb;min-width:220px}
-.footer-note{margin-top:18px;color:var(--muted);font-size:13px}
+
+.left-panel, .right-panel {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 12px;
+  overflow: auto;
+}
+
+.pdf-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: #777;
+  display: inline-block;
+}
+
+.pdf-canvas { display: block; }
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+/* highlight box */
+.highlight-box {
+  position: absolute;
+  background: rgba(255, 235, 59, 0.6);
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px rgba(255,235,59,0.15) inset;
+  pointer-events: none;
+}
+
+/* small UI */
+.page-indicator {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* right panel */
+.ref-button {
+  display: inline-block;
+  padding: 4px 8px;
+  margin-left: 6px;
+  background: #0b5cff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ref-button:hover { opacity: 0.9; }
+.status { margin-top: 12px; }
+.ok { color: green; }
+.warn { color: #444; }
